@@ -1,0 +1,31 @@
+POST http://localhost:4000/users/login
+Content-Type: application/json
+
+{
+    "email":"uppinurigouthamreddy@gmail.com",
+    "img":""
+}
+###
+POST http://localhost:4000/users/add-new-site
+Content-Type: application/json
+
+{
+    "email":"uppinurigouthamreddy@gmail.com",
+    "APIkey":"468",
+    "url":"something"
+}
+###
+POST http://localhost:4000/users/get-stats
+Content-Type: application/json
+
+{
+    "email":"uppinurigouthamreddy@gmail.com"
+}
+###
+POST http://localhost:4000/users/get-sessions
+Content-Type: application/json
+
+{
+    "email":"gouth@gmail.com",
+    "url":"localhost"
+}
