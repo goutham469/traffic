@@ -1,0 +1,42 @@
+.header {
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .header h2 {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .personal-details {
+    margin-top: 0.5rem;
+    color: #666;
+  }
+  
+  .personal-details p {
+    margin: 0.5rem 0;
+  }
+  
+  .main-content {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .user-button {
+    background-color: #1a73e8;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    margin: 5px;
+  }
+  
+  .user-button:hover {
+    background-color: #15498b;
+  }
+  

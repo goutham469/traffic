@@ -1,0 +1,52 @@
+.add-site-container {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  h3 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .input-group {
+    margin-bottom: 1rem;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+  
+  /* input[type="text"] {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  } */
+  .add-site-input{
+    width: 250px;
+    height: 20px;
+    border-radius: 5px;
+
+    padding: 10px;
+  }
+ 
+  
+  .error {
+    color: #e63946;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  .success {
+    color: #2a9d8f;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  

@@ -1,0 +1,104 @@
+/* Container styling */
+.container {
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  /* Hero Section */
+  .hero {
+    background-color: #1a73e8;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .ctaButton {
+    background-color: #ffa500;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+
+    margin: 10px;
+  }
+  
+  .ctaButton:hover {
+    background-color: #ff8c00;
+  }
+  
+  /* Features Section */
+  .features {
+    padding: 2rem;
+    text-align: center;
+    background-color: #f9f9f9;
+  }
+  
+  .featuresGrid {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .featureCard {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 6px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Pricing Section */
+  .pricing {
+    padding: 2rem;
+    text-align: center;
+    background-color: #f1f1f1;
+  }
+  
+  .pricingGrid {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  
+  .pricingCard {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 1.5rem;
+    border-radius: 6px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pricingCard ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Testimonials Section */
+  .testimonials {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .testimonialCard {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin: 0.5rem auto;
+    border-radius: 6px;
+    max-width: 500px;
+  }
+  
+  /* CTA Section */
+  .ctaSection {
+    padding: 2rem;
+    background-color: #1a73e8;
+    color: #fff;
+    text-align: center;
+  }
+  
