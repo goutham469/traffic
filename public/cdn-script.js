@@ -60,7 +60,7 @@
         };
 
         // Log the final data to verify
-        console.log(finalData);
+        // console.log(finalData);
 
         
         let data = await fetch('http://192.168.1.102:4000/traffic/visit', {
@@ -79,7 +79,7 @@
 
 
         const sessionStart = new Date().getTime()
-        console.log('Session started at:', sessionStart);
+        // console.log('Session started at:', sessionStart);
 
         function generateRandomCode(length = 30) {
             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

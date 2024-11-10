@@ -60,7 +60,7 @@ function Dashboard() {
 
 function Dashboard2({ siteData }) {
     // Register the components you need
-    console.log("inside Dashboard2 ",siteData,siteData&&siteData.url)
+    // console.log("inside Dashboard2 ",siteData,siteData&&siteData.url)
     const [logData , setLogData] = useState(false)
     const [sessionData , setSessionData] = useState(false)
 

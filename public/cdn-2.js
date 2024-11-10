@@ -50,7 +50,7 @@
         // session management process
 
         const sessionStart = new Date().getTime()
-        console.log('Session started at:', sessionStart);
+        // console.log('Session started at:', sessionStart);
 
         function generateRandomCode(length = 40) {
             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -87,7 +87,7 @@
         console.log(finalData);
 
         
-        let data = await fetch('http://localhost:4000/traffic/visit', {
+        let data = await fetch('https://traffic-production.up.railway.app/traffic/visit', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -103,7 +103,7 @@
             console.log('Session ended at:', sessionEnd);
 
             // Send session end to the backend
-            await fetch('http://localhost:4000/traffic/session/end', {
+            await fetch('https://traffic-production.up.railway.app/traffic/session/end', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

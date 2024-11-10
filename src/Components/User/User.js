@@ -15,7 +15,7 @@ function User() {
         body: JSON.stringify({ email: localStorage.getItem('email') })
       });
       response = await response.json();
-      console.log(response);
+      // console.log(response);
 
       localStorage.setItem('userData' , JSON.stringify(response))
       setData(response);
