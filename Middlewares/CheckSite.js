@@ -1,5 +1,7 @@
 const CheckSite = (req,res,next) =>{
 
+    console.log("TRAFFIC : ",req.body.url)
+
     if(req.body.url)
     {
         console.log("inside check site middleware !")

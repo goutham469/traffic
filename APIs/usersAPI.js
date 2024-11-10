@@ -108,6 +108,8 @@ usersAPI.post('/get-stats' ,CheckUserExistence , compress , async(req,res)=>{
 
 usersAPI.post('/get-sessions' ,CheckUserExistence ,  async(req,res)=>{
     let data = await req.sessionsCollection.find({ url : req.body.url} ).toArray()
+
+    console.log("SESSIONS DATA ",data,req.body)
     if(data.length > 0)
     {
         res.send({status:true , data:data})

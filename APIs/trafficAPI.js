@@ -25,6 +25,9 @@ trafficAPI.post('/visit1', async (req, res) => {
 
 // Main route to handle visits and update user data
 trafficAPI.post('/visit', async (req, res) => {
+
+    console.log("a visit came ")
+
     try {
         const incomingData = req.body;
         const userId = incomingData.url; // Assuming the URL is the unique identifier
@@ -101,6 +104,10 @@ trafficAPI.post('/visit', async (req, res) => {
 
         // Update logs
         let logsObj = {
+            url: req.body.url,
+            id: req.body.id,
+            ip:req.body.ip,
+            
             timestamp: incomingData.timestamp,
             country: incomingData.address.country,
             city: incomingData.address.city,
@@ -112,6 +119,7 @@ trafficAPI.post('/visit', async (req, res) => {
             referrer: incomingData.referrer,
             isp: incomingData.address.isp,
             zip: incomingData.address.zip,
+            start: req.body.start
         }
 
         if(user.plan == 'premium')

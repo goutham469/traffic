@@ -26,6 +26,6 @@ POST http://localhost:4000/users/get-sessions
 Content-Type: application/json
 
 {
-    "email":"gouth@gmail.com",
+    "email":"uppinurigouthamreddy@gmail.com",
     "url":"localhost"
 }

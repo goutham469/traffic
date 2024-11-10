@@ -83,6 +83,7 @@ setInterval(async ()=>{
     await setDomains()
 } , 1000*2) 
 
+
 app.get('/meta',async (req,res)=>{
     let response = await req.metaCollection.find().toArray()
     res.send(response[0])
