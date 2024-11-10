@@ -60,7 +60,7 @@ function Dashboard() {
 
 function Dashboard2({ siteData }) {
     // Register the components you need
-    // console.log("inside Dashboard2 ",siteData,siteData&&siteData.url)
+    console.log("inside Dashboard2 ",siteData,siteData&&siteData.url)
     const [logData , setLogData] = useState(false)
     const [sessionData , setSessionData] = useState(false)
 
@@ -115,10 +115,12 @@ function Dashboard2({ siteData }) {
     };
 
     const pieDataCountry = {
-        labels: siteData.countrys.map(device => device.name),
+        labels: siteData.countrys
+        .filter(device => device.name)
+        .map(device => device.name),
         datasets: [
             {
-                data: siteData.countrys.map(country => country.cnt),
+                data: siteData.countrys.filter(country=>country.name).map(country => country.cnt),
                 backgroundColor: [
                     '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40',
                     '#FFCD56', '#C9CBCF', '#36A2EB', '#7E57C2', '#66BB6A', '#FFA726'
@@ -236,13 +238,15 @@ function Dashboard2({ siteData }) {
                             </tr>
                         </thead>
                         <tbody>
-                            {siteData.countrys.map((data, idx) => (
-                                <tr key={data.name}>
-                                    <td>{idx + 1}</td>
-                                    <td>{data.name}</td>
-                                    <td>{data.cnt}</td>
-                                </tr>
-                            ))}
+                            {
+                                siteData.countrys.filter(country=>country.name).map((data, idx) => (
+                                    <tr key={data.name}>
+                                        <td>{idx + 1}</td>
+                                        <td>{data.name}</td>
+                                        <td>{data.cnt}</td>
+                                    </tr>
+                                ))
+                            }
                         </tbody>
                     </table>
                 </div>
