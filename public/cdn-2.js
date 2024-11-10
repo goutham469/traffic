@@ -6,7 +6,7 @@
         const response = await fetch('https://api64.ipify.org?format=json');
         const { ip } = await response.json();
 
-        const response2 = await fetch(`http://ip-api.com/json/${ip}`);
+        const response2 = await fetch(`https://ip-api.com/json/${ip}`);
         const locationData = await response2.json();
     
         // Initial user details

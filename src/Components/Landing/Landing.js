@@ -34,6 +34,15 @@ const Landing = () => {
             <h3>Country-Level Analysis</h3>
             <p>See where your visitors are coming from with geo insights.</p>
           </div>
+          <div className={styles.featureCard}>
+            <h3>Browser-Level Analysis</h3>
+            <p>See which browser your users are using .</p>
+          </div>
+          <div className={styles.featureCard}>
+            <h3>Device Distribution</h3>
+            <p>See which devices your users are using.</p>
+          </div>
+          
           {/* Add more features as needed */}
         </div>
       </section>

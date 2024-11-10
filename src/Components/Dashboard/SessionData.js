@@ -6,10 +6,10 @@ function SessionData({ url }) {
 
     async function getSessionData()
     {
-        let result = await fetch("http://localhost:4000/users/get-sessions",{
+        let result = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/users/get-sessions`,{
             method:"POST",
             headers:{"Content-Type":"application/json"},
-            body:JSON.stringify({ email:"gouth@gmail.com" , url:"localhost" })
+            body:JSON.stringify({ email:"gouth@gmail.com" , url:url })
         })
         result = await result.json()
         if(result.status)

@@ -12,23 +12,30 @@ L.Icon.Default.mergeOptions({
 });
 
 const MapVisualization = ({ data }) => {
-    return (
-        <center>
-            <MapContainer center={[0, 0]} zoom={2} style={{ height: '80vh', width: '60vw' , border:"2px solid black" }}>
-                <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution="&copy; OpenStreetMap contributors"
-                />
-                {data.map((item, index) => (
-                    <Marker key={index} position={[item.lat, item.lon]}>
-                        <Popup>
-                            {item.country}-{item.city} <br /> Lat: {item.lat} <br /> Long: {item.lon}
-                        </Popup>
-                    </Marker>
-                ))}
-            </MapContainer>
-        </center>
-    );
+    if(!data)
+    {
+        return <b>Not enough Data to show </b>
+    }
+    else
+    {
+        return (
+            <center>
+                <MapContainer center={[0, 0]} zoom={2} style={{ height: '80vh', width: '60vw' , border:"2px solid black" }}>
+                    <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution="&copy; OpenStreetMap contributors"
+                    />
+                    {data&&data.map((item, index) => (
+                        <Marker key={index} position={[item.lat, item.lon]}>
+                            <Popup>
+                                {item.country}-{item.city} <br /> Lat: {item.lat} <br /> Long: {item.lon}
+                            </Popup>
+                        </Marker>
+                    ))}
+                </MapContainer>
+            </center>
+        );
+    }
 };
 
 export default MapVisualization;

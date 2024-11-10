@@ -12,7 +12,7 @@ function Dashboard() {
 
     async function getData() {
         try {
-            const response = await fetch('http://localhost:4000/users/get-stats', {
+            const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/users/get-stats`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: localStorage.getItem('email') })
@@ -60,6 +60,7 @@ function Dashboard() {
 
 function Dashboard2({ siteData }) {
     // Register the components you need
+    console.log("inside Dashboard2 ",siteData,siteData&&siteData.url)
     const [logData , setLogData] = useState(false)
     const [sessionData , setSessionData] = useState(false)
 
@@ -284,14 +285,14 @@ function Dashboard2({ siteData }) {
                     <button onClick={()=>setSessionData(true)}>show session data</button>
                 }
             </div> */}
-
+ 
             <div>
                 {
                     logData?
                     <div>
                         <button onClick={()=>setLogData(false)}>hide log data</button>
-                        <MapVisualization data={siteData.logs}/>
-                        <LogData logs={siteData.logs}/>
+                        {/* <MapVisualization data={siteData.logs}/> */}
+                        <LogData url={siteData.url}/>
                     </div>
                     :
                     <button onClick={()=>setLogData(true)}>show log data</button>
