@@ -42,8 +42,12 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-box">
-        <h2>Login/Signup</h2>
-        
+        <h2>Login/Signup</h2> 
+        <div>
+          <img src={`${process.env.REACT_APP_CLIENT_BASE_URL}/favicon.ico`} style={{width:"200px"}}/><br/>
+          <b style={{fontSize:"25px"}}>Traffic meter</b>
+        </div>
+        <p>we are glad to see you again , <br/>please login to continue.</p>
         <center>
           <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}>
             <GoogleLogin onSuccess={onSuccess}/>

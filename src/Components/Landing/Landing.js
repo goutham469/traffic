@@ -84,6 +84,7 @@ const Landing = () => {
       <section className={styles.ctaSection}>
         <h2>Ready to Start Analyzing Your Traffic?</h2>
         <button className={styles.ctaButton}>Sign Up Free</button>
+        <a className={styles.ctaButton} href={`${process.env.REACT_APP_CLIENT_BASE_URL}/admin`}>Admin Login</a>
       </section>
     </div>
   );

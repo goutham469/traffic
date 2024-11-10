@@ -1,0 +1,45 @@
+.p-personal-details {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .p-detail {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 5px;
+  }
+  
+  .p-icon {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #4a90e2; /* Default icon color */
+    transition: color 0.3s ease;
+  }
+  
+
+  
+  .p-detail:hover {
+    background-color: #f0f0f0; /* Light gray background on hover */
+    transform: translateX(5px); /* Slight horizontal move for effect */
+  }
+  
+  .p-detail:hover .icon {
+    color: #0077b5; /* Change icon color on hover (LinkedIn blue) */
+  }
+  
+  .p-detail:hover span {
+    color: #0077b5; /* Change text color on hover */
+  }
+  
+  .p-detail:active {
+    transform: translateX(0); /* Reset position when clicked */
+  }
+  
