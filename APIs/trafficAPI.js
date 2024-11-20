@@ -26,7 +26,7 @@ trafficAPI.post('/visit1', async (req, res) => {
 // Main route to handle visits and update user data
 trafficAPI.post('/visit', async (req, res) => {
 
-    console.log("a visit came ")
+    // console.log("a visit came ",req.body)
 
     try {
         const incomingData = req.body;
@@ -111,13 +111,13 @@ trafficAPI.post('/visit', async (req, res) => {
             timestamp: incomingData.timestamp,
             country: incomingData.address.country,
             city: incomingData.address.city,
-            lat: incomingData.address.lat,
-            lon: incomingData.address.lon,
+            lat: incomingData.preciseLocation?.latitude,
+            lon: incomingData.preciseLocation?.longitude,
             browser: incomingData.browser,
             deviceType: incomingData.deviceType,
             platform: incomingData.platform,
             referrer: incomingData.referrer,
-            isp: incomingData.address.isp,
+            isp: incomingData.address.organization,
             zip: incomingData.address.zip,
             start: req.body.start
         }
