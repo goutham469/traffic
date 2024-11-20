@@ -45,7 +45,9 @@
         // Capture referrer for tracking sources
         const referrer = document.referrer || "Direct";
 
- 
+
+
+        // session management process
 
         const sessionStart = new Date().getTime()
         // console.log('Session started at:', sessionStart);
@@ -83,8 +85,6 @@
 
         // Log the final data to verify
         // console.log(finalData);
-        
-        // console.log(locationData)
 
         
         let data = await fetch('https://traffic-production.up.railway.app/traffic/visit', {
@@ -95,31 +95,37 @@
             body: JSON.stringify(finalData)
         });
 
-        // user-session management !
 
 
-        // const handleUnload = async () => {
-        //     const sessionEnd = new Date().getTime()
-        //     console.log('Session ended at:', sessionEnd);
 
-        //     // Send session end to the backend
-        //     await fetch('https://traffic-production.up.railway.app/traffic/session/end', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify({ end: sessionEnd , id:localStorage.getItem('trafficUserId') , url: window.location.hostname }),
-        //     });
 
-        //     localStorage.removeItem('trafficUserId')
-        // };
 
-        // window.addEventListener('beforeunload', async (event)=>{
-        //     handleUnload();
-        //     const message = "You have unsaved changes. Are you sure you want to leave?";
-        //     event.returnValue = message; // This triggers the warning dialog
-        //     return message;
-        // });
+
+
+        // user-session management ! 
+
+        const handleUnload = async () => {
+            const sessionEnd = new Date().getTime()
+            console.log('Session ended at:', sessionEnd);
+
+            // Send session end to the backend
+            await fetch('https://traffic-production.up.railway.app/traffic/session/end', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ end: sessionEnd , id:localStorage.getItem('trafficUserId') , url: window.location.hostname }),
+            });
+
+            localStorage.removeItem('trafficUserId')
+        };
+
+        window.addEventListener('beforeunload', async (event)=>{
+            handleUnload();
+            const message = "You have unsaved changes. Are you sure you want to leave?";
+            event.returnValue = message; // This triggers the warning dialog
+            return message;
+        });
 
 
     } catch (error) {
