@@ -3,7 +3,7 @@
     try {
         
         // Fetch the user's public IP address
-        const response = await fetch('https://api64.ipify.org?format=json');
+        const response = await fetch('https://api.ipify.org?format=json');
         const { ip } = await response.json();
 
         const response2 = await fetch(`https://get.geojs.io/v1/ip/geo/${ip}.json`);
@@ -94,33 +94,6 @@
             },
             body: JSON.stringify(finalData)
         });
-
-        // user-session management !
-
-
-        // const handleUnload = async () => {
-        //     const sessionEnd = new Date().getTime()
-        //     console.log('Session ended at:', sessionEnd);
-
-        //     // Send session end to the backend
-        //     await fetch('https://traffic-production.up.railway.app/traffic/session/end', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify({ end: sessionEnd , id:localStorage.getItem('trafficUserId') , url: window.location.hostname }),
-        //     });
-
-        //     localStorage.removeItem('trafficUserId')
-        // };
-
-        // window.addEventListener('beforeunload', async (event)=>{
-        //     handleUnload();
-        //     const message = "You have unsaved changes. Are you sure you want to leave?";
-        //     event.returnValue = message; // This triggers the warning dialog
-        //     return message;
-        // });
-
 
     } catch (error) {
         console.error('Tracking script error:', error);

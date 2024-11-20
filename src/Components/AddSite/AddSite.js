@@ -65,12 +65,12 @@ function AddSite() {
           <p style={{fontSize:"12px"}}>paste this code snippet in the <b>index.html</b> of your application.</p>
           <hr/>
           <div style={{backgroundColor:"black",borderRadius:"5px",color:"white",padding:"5px"}}> 
-              <label>{`<script src="https://traff.netlify.app/cdn-2.js"></script>`}</label>
+              <label>{`<script src="https://traff.netlify.app/cdn.js"></script>`}</label>
           </div>
           <br/>
 
           <button onClick={()=>{
-            navigator.clipboard.writeText(`<script src="https://traff.netlify.app/cdn-2.js"></script>`)
+            navigator.clipboard.writeText(`<script src="https://traff.netlify.app/cdn.js"></script>`)
             setNotification({ message: "code copied to clipboard" , color: 'green' });
           }}>📄COPY Code</button>
 
