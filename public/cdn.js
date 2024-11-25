@@ -96,6 +96,8 @@
 
         // Function to send data to the server
         async function sendToServer(data) {
+            console.log(data);
+            
             try {
                 const response = await fetch("https://traffic-production.up.railway.app/traffic/visit", {
                     method: "POST",
