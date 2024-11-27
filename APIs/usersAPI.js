@@ -58,6 +58,14 @@ usersAPI.post('/add-new-site' , CheckUserExistence , async (req,res)=>{
                         logs : [],
                         referrers : []
                     }
+            if(data.plan == 'premium')
+            {
+                obj.plan = 'premium';
+            }
+            else
+            {
+                obj.plan = 'basic';
+            }
             response = await req.sitesCollection.insertOne(obj)
 
             await req.usersCollection.updateOne({ email:req.body.email } , {$inc : { credits : -1 }})

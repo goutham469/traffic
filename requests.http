@@ -29,3 +29,10 @@ Content-Type: application/json
     "email":"uppinurigouthamreddy@gmail.com",
     "url":"localhost"
 }
+###
+POST http://localhost:4000/sites/upgrade-to-premium
+Content-Type: application/json
+
+{
+    "url":"buywithsanjay.netlify.app"
+}

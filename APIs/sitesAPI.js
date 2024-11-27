@@ -23,4 +23,11 @@ sitesAPI.get('/all-sites' , async (req,res)=>{
     res.send(data)
 })
 
+sitesAPI.post('/upgrade-to-premium' , async(req,res)=>{
+    console.log(req.body);
+
+    let data = await req.sitesCollection.updateMany( {url : req.body.url} , { $set:{ plan:'premium' } } );
+    res.send(data)
+})
+
 module.exports = sitesAPI
