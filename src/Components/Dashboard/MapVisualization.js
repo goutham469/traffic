@@ -26,9 +26,9 @@ const MapVisualization = ({ data }) => {
                 {data
                     .filter(item => item && item.lat !== null && item.lon !== null) // Filter out invalid data points
                     .map((item, index) => (
-                        <Marker key={index} position={[item.lat, item.lon]}>
+                        <Marker key={index} position={[item.lat || item.latitude , item.lon || item.latitude]}>
                             <Popup>
-                                {item.country}-{item.city} <br /> Lat: {item.lat} <br /> Long: {item.lon}
+                                {item.country}-{item.city} <br /> Lat: {item.lat || item.latitude } <br /> Long: {item.lon || item.latitude }
                             </Popup>
                         </Marker>
                     ))

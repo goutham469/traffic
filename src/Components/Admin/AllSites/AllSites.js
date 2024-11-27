@@ -28,6 +28,25 @@ function AllSites() {
 
 function Site({site})
 {
+    async function upgradeSiteToPremium(e)
+    {
+        e.preventDefault();
+        let data = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/sites/upgrade-to-premium`,{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body : JSON.stringify( { url : site.url} )
+        })
+
+        console.log(data)
+        data = await data.json()
+        if(data.acknowledged)
+        {
+            alert("success")
+        }
+        else{
+            alert("failed to make operation")
+        }
+    }
     return <div className='admin-single-user'>
         <b>{site.url}</b><br/>
         <p>owner : {site.email}</p>
@@ -37,7 +56,10 @@ function Site({site})
                 site.plan&&site.plan == 'premium'?
                 <b>Premium Site</b>
                 :
-                <b>normal plan</b>
+                <div>
+                    <b>normal plan</b>
+                    <button onClick={(e)=>upgradeSiteToPremium(e)}>Upgrade !</button>
+                </div>
             }
         </b>
     </div>
