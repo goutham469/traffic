@@ -210,8 +210,8 @@ function LogData({url}) {
                                 <td>{data.country}</td>
                                 <td>{data.city}</td>
                                 <td>{data.zip}</td>
-                                <td>{data&&data.lat}</td>
-                                <td>{data&&data.lon}</td>
+                                <td>{data&&data.lat || data.latitude}</td>
+                                <td>{data&&data.lon || data.longitude}</td>
                                 <td>{data.start}</td>
                                 <td>{data.end?data.end:'None'}</td>
                                 <td>{data.end?(Math.floor((data.end-data.start)/1000)):'None'}</td>
