@@ -13,12 +13,17 @@ import { ToastContainer } from "react-toastify";
 import Views from "./visuals/Views";
 import ExportData from "./visuals/ExportData";
 import LogData from "./visuals/LogData";
+import RefererGraph from "./visuals/RefererGraph";
 
 
 function App() {
   const router = createBrowserRouter([
     {
       path:'/',
+      element:<Login/>
+    },
+    {
+      path:'/login',
       element:<Login/>
     },
     {
@@ -68,6 +73,10 @@ function App() {
         {
           path:'log-data',
           element:<LogData/>
+        },
+        {
+          path:'referer-data',
+          element:<RefererGraph/>
         }
       ]
     },

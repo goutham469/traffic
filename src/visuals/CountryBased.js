@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import { FaEye } from 'react-icons/fa';
 import PieGraph from './PieGraph';
+import MapVisualization from './MapVisual';
 
 function CountryBased() {
   return (
@@ -80,6 +81,13 @@ function SiteMetrics() {
                 <h2 className='text-lg font-semibold'>Country-wise traffic Distribution</h2>
             </div>
 
+            <MapVisualization 
+            locations={
+                mainData.find(data => data.url === siteName)?.stats?.daily[ mainData.find(data => data.url === siteName)?.stats?.daily.length - 1 ]?.day
+            }
+            />
+            <br/>
+            <br/>
 			
 			<PieGraph arr={filteredCountryData} dataKey="name" value="cnt" description="Country-wise traffic" radius={160}/>
 			<br/>
