@@ -15,28 +15,34 @@ const defaultIcon = L.icon({
   popupAnchor: [1, -34],
 });
 
-const locations = [
-  { lat: 37.7749, lon: -122.4194, name: "San Francisco" },
-  { lat: 40.7128, lon: -74.006, name: "New York" },
-  { lat: 34.0522, lon: -118.2437, name: "Los Angeles" },
-  { lat: 51.5074, lon: -0.1278, name: "London" },
-  { lat: 48.8566, lon: 2.3522, name: "Paris" },
-];
+const MapVisual = ( {locations} ) => {
+  if(!locations || locations.length == 0){
+    return <h1 className="text-center text-red-600 font-bold bg-slate-900">Not enought Data to Display Maps</h1>
+  }else if(!locations.length){
+    console.log(locations)
+    return <h1 className="text-center text-red-600 font-bold bg-slate-900">Invalid data type given</h1>
+  }
+  console.log(locations)
 
-const MapVisualization = ( { locations } ) => {
   return (
     <MapContainer center={[37.7749, -122.4194]} zoom={3} style={{ height: "500px", width: "100%" }}>
       {/* Tile Layer (Map Background) */}
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
       {/* Add Markers */}
-      {locations.map((location, index) => (
-        <Marker key={index} position={[location.lat, location.lon]} icon={defaultIcon}>
-          <Popup>{location.name}</Popup>
-        </Marker>
-      ))}
+      {
+        locations
+        ?.filter(item => item && item.lat !== null && item.lon !== null)
+        ?.map((location, index) => (
+          <Marker key={index} position={[location.lat || location.latitude , location.lon || location.longitude ]} icon={defaultIcon}>
+            <Popup>
+              {location.country}-{location.city} <br /> Lat: {location.lat || location.latitude } <br /> Long: {location.lon || location.longitude }
+            </Popup>
+          </Marker>
+        ))
+      }
     </MapContainer>
   );
 };
 
-export default MapVisualization;
+export default MapVisual;

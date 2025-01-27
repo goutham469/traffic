@@ -38,7 +38,6 @@ function SiteMetrics() {
             const result = await response.json();
             if (response.ok) {
                 setMainData(result.data);
-                console.log(result.data);
 
                 // Count null or undefined country names
                 const countryData = result.data.find(data => data.url === siteName)?.countrys || [];
@@ -86,6 +85,8 @@ function SiteMetrics() {
                 mainData.find(data => data.url === siteName)?.stats?.daily[ mainData.find(data => data.url === siteName)?.stats?.daily.length - 1 ]?.day
             }
             />
+
+
             <br/>
             <br/>
 			
