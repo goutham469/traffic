@@ -357,71 +357,66 @@ function Logs() {
         link.click();
         URL.revokeObjectURL(url);
     }
-    function downloadPDF() 
-    {
-    const pdf = new jsPDF();
-    
-    // Define table headers
-    const headers = [
-        ["S.No", "IP", "Timestamp", "Country", "City", "ZIP", "Latitude", "Longitude",
-        "Start", "End", "Duration (sec)", "Browser", "Device Type", "Platform", "Referrer", "InternetSP"]
-    ];
-    
-    // Map sessions data into rows for the table
-    const rows = sessions.map((data, idx) => [
-        idx + 1, 
-        data.ip, 
-        data.timestamp, 
-        data.country, 
-        data.city, 
-        data.zip, 
-        data.lat, 
-        data.lon, 
-        data.start, 
-        data.end ? data.end : 'None', 
-        data.end ? Math.floor((data.end - data.start) / 1000) : 'None', 
-        data.browser, 
-        data.deviceType, 
-        data.platform, 
-        data.referrer, 
-        data.isp
-    ]);
-    
-    // Add a title to the PDF
-    pdf.text("Session Data", 10, 10);
-    
-    // Generate the table
-    autoTable(pdf, {
+    function downloadA3PDF() {
+      const pdf = new jsPDF({
+        orientation: "landscape",
+        unit: "mm",
+        format: "a3",
+      });
+  
+      const headers = [
+        ["S.No", "IP", "Timestamp", "Country", "City", "ZIP", "Latitude", "Longitude", "Start", "End", "Duration (sec)", "Browser", "Device Type", "Platform", "Referrer", "ISP"],
+      ];
+  
+      const rows = sessions.map((data, idx) => [
+        idx + 1,
+        data.ip,
+        data.timestamp,
+        data.country,
+        data.city,
+        data.zip,
+        data.lat,
+        data.lon,
+        data.start,
+        data.end ? data.end : 'None',
+        data.end ? Math.floor((data.end - data.start) / 1000) : 'None',
+        data.browser,
+        data.deviceType,
+        data.platform,
+        data.referrer,
+        data.isp,
+      ]);
+  
+      pdf.text("Session Data", 10, 10);
+      autoTable(pdf, {
         head: headers,
         body: rows,
-        startY: 0,
-        startX:0,
+        startY: 20,
+        startX: 10,
         theme: "grid",
         styles: { fontSize: 8 },
         headStyles: { fillColor: [41, 128, 185] },
-        showHead: "firstPage",
         columnStyles: {
-        0: { cellWidth: 8 },    // S.No column
-        1: { cellWidth: 20 },    // IP column
-        2: { cellWidth: 20 },    // Timestamp column
-        3: { cellWidth: 10 },    // Country column
-        4: { cellWidth: 10 },    // City column
-        5: { cellWidth: 8 },    // ZIP column
-        6: { cellWidth: 10 },    // Latitude column
-        7: { cellWidth: 10 },    // Longitude column
-        8: { cellWidth: 15 },    // Start column
-        9: { cellWidth: 15 },    // End column
-        10: { cellWidth: 8 },   // Duration column
-        11: { cellWidth: 10 },   // Browser column
-        12: { cellWidth: 10 },   // Device Type column
-        13: { cellWidth: 10 },   // Platform column
-        14: { cellWidth: 15 },   // Referrer column
-        15: { cellWidth: 30 },   // ISP column
-        }
-    });
-    
-    // Save the PDF
-    pdf.save("session_data.pdf");
+          0: { cellWidth: 10 },
+          1: { cellWidth: 30 },
+          2: { cellWidth: 40 },
+          3: { cellWidth: 10 },
+          4: { cellWidth: 20 },
+          5: { cellWidth: 15 },
+          6: { cellWidth: 15 },
+          7: { cellWidth: 15 },
+          8: { cellWidth: 30 },
+          9: { cellWidth: 30 },
+          10: { cellWidth: 20 },
+          11: { cellWidth: 20 },
+          12: { cellWidth: 20 },
+          13: { cellWidth: 20 },
+          14: { cellWidth: 80 },
+          15: { cellWidth: 30 },
+        },
+      });
+  
+      pdf.save("session_data_A3.pdf");
     }
 
   return (
@@ -486,7 +481,7 @@ function Logs() {
           </div>
 
           <button onClick={downloadCSV} className="m-4 p-2 bg-blue-600 text-white rounded">Download CSV</button>
-          <button onClick={downloadPDF} className="m-4 p-2 bg-blue-600 text-white rounded">Download PDF</button>
+          <button onClick={downloadA3PDF} className="m-4 p-2 bg-blue-600 text-white rounded">Download PDF</button>
           <button onClick={downloadJSON} className="m-4 p-2 bg-blue-600 text-white rounded">Download json</button>
         </>
       ) : (

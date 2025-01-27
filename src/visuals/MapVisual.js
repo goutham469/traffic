@@ -21,11 +21,12 @@ const MapVisual = ( {locations} ) => {
   }else if(!locations.length){
     console.log(locations)
     return <h1 className="text-center text-red-600 font-bold bg-slate-900">Invalid data type given</h1>
-  }
-  console.log(locations)
+  } 
+  
+  const indiaCoordinates = [20.5937, 78.9629];
 
   return (
-    <MapContainer center={[37.7749, -122.4194]} zoom={3} style={{ height: "500px", width: "100%" }}>
+    <MapContainer center={indiaCoordinates} zoom={3} style={{ height: "500px", width: "100%" }}>
       {/* Tile Layer (Map Background) */}
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 

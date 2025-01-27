@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../common/Header'
 import Sites from '../common/Sites'
 import { useNavigate } from 'react-router-dom'
 import { FaCopy, FaCheckCircle } from "react-icons/fa";
 import { toast } from 'react-toastify';
+import { MdDelete } from "react-icons/md";
 
 
 function AddSite() {
   return (
     <div className='flex-1 overflow-auto relative z-10'>
 			<Header title='Add new Site' />
-
 			<main>
 				 <Sites />
 				 <NewSite />
+         <Update />
 			</main>
 		</div>
   )
@@ -45,8 +46,7 @@ function NewSite() {
     setScriptTag(true);
 
     setNotification({ message: response.message, color: "green" });
-	toast.success("Your site was added successfully.")
-	window.location.reload();
+	toast.success("Your site was added successfully.") 
   };
 
   return (
@@ -117,4 +117,82 @@ function NewSite() {
 }
 
 
-export default AddSite
+
+function Update() {
+  const [sites, setSites] = useState([]);
+  const [randomString, setRandomString] = useState("");
+  const [urlToDelete, setUrlToDelete] = useState("");
+  const [inputUrl, setInputUrl] = useState("");
+  const [inputString, setInputString] = useState("");
+  
+  useEffect(() => {
+    const storedSites = JSON.parse(localStorage.getItem("sites")) || [];
+    setSites(storedSites);
+  }, []);
+
+  async function deleteSite(url) {
+    let response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/sites/delete-site`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url: url })
+    });
+
+    if (response.ok) {
+      response = await response.json();
+      console.log(response);
+      toast.success(response.acknowledges);
+      // Remove the site from the state after successful deletion
+      setSites(sites.filter(site => site.name !== url));
+    } else {
+      toast.error("Deletion failed");
+    }
+  }
+
+  function initiateSiteDelete(e, siteUrl) {
+    e.preventDefault();
+    const randStr = generateRandomString(10); // Generate random string
+    setRandomString(randStr);
+    setUrlToDelete(siteUrl);
+
+    // Open a confirmation modal (can be a simple pop-up for now)
+    const userInputUrl = prompt("Enter the URL of the site to delete:");
+    const userInputString = prompt(`Enter the verification code: ${randStr}`);
+
+    if (userInputUrl === siteUrl && userInputString === randStr) {
+      deleteSite(siteUrl);
+    } else {
+      toast.error("Verification failed. Deletion cancelled.");
+    }
+  }
+
+  function generateRandomString(length) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+  }
+
+  return (
+    <ul className='text-center m-5'>
+      {
+        sites.map(site => (
+          <li
+            key={site.id}
+            className="flex items-center gap-2 p-1 bg-gray-800 rounded-md shadow-md hover:bg-gray-700 transition cursor-pointer w-full max-w-[300px] m-2"
+          >
+            <MdDelete
+              onClick={(e) => initiateSiteDelete(e, site.name)}
+              className="text-red-600 cursor-pointer"
+            />
+            <span className="text-white text-lg truncate">{site.name}</span>
+          </li>
+        ))
+      }
+    </ul>
+  );
+}
+
+
+export default AddSite;
