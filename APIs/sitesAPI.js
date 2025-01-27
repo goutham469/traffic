@@ -23,6 +23,14 @@ sitesAPI.get('/all-sites' , async (req,res)=>{
     res.send(data)
 })
 
+sitesAPI.delete('/delete-site' , async(req,res) => {
+    console.log(req.body);
+
+    await req.sitesCollection.deleteOne( { url:req.body.url } );
+    let data = await req.sessionsCollection.deleteMany( { url:req.body.url } );
+    res.send(data)
+})
+
 sitesAPI.post('/upgrade-to-premium' , async(req,res)=>{
     console.log(req.body);
 

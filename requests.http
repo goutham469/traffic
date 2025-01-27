@@ -36,3 +36,11 @@ Content-Type: application/json
 {
     "url":"buywithsanjay.netlify.app"
 }
+
+###
+DELETE http://localhost:4000/sites/delete-site
+Content-Type: application/json
+
+{
+    "url":"localhost"
+}
