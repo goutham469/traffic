@@ -22,6 +22,7 @@ const MapVisual = ( {locations} ) => {
     console.log(locations)
     return <h1 className="text-center text-red-600 font-bold bg-slate-900">Invalid data type given</h1>
   } 
+ 
   
   const indiaCoordinates = [20.5937, 78.9629];
 

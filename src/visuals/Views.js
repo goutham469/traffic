@@ -51,10 +51,10 @@ function SiteMetrics() {
     const filterDataByDays = (data, days) => {
         const cutoffDate = new Date();
         cutoffDate.setDate(cutoffDate.getDate() - days);
-        return data.filter(entry => new Date(entry.day) >= cutoffDate);
+        return data?.filter(entry => new Date(entry.day) >= cutoffDate);
     };
 
-    const dayWiseData = filterDataByDays(mainData.find(data => data.url === siteName)?.stats?.daily || [], filterDays);
+    const dayWiseData = filterDataByDays(mainData.find(data => data?.url === siteName)?.stats?.daily || [], filterDays);
     
     return (
         <div>
@@ -66,8 +66,8 @@ function SiteMetrics() {
 					transition={{ duration: 1 }}
 				>
                     <StatCard name="Current Website" icon={FaEye} value={siteName} color="green" />
-                    <StatCard name="Total views" icon={FaEye} value={mainData.find(data => data.url === siteName)?.views} color="green" />
-                    <StatCard name="Last Day Viewed" icon={FaEye} value={mainData.find(data => data.url === siteName)?.stats?.daily[ mainData.find(data => data.url === siteName)?.stats?.daily.length - 1  ].day} color="green" />
+                    <StatCard name="Total views" icon={FaEye} value={mainData.find(data => data?.url === siteName)?.views} color="green" />
+                    <StatCard name="Last Day Viewed" icon={FaEye} value={mainData.find(data => data?.url === siteName)?.stats?.daily[ mainData.find(data => data?.url === siteName)?.stats?.daily.length - 1  ]?.day} color="green" />
             </motion.div>
             </div>
 
@@ -92,9 +92,9 @@ function SiteMetrics() {
             <br/>
             <BarGraph arr={dayWiseData} dataKey="day" value="cnt" description="Day-wise Bar Chart"   />
             <br />
-            <LineGraph arr={mainData.find(data => data.url === siteName)?.stats?.monthly} dataKey="month" value="cnt" description="Month-wise" />
+            <LineGraph arr={mainData.find(data => data?.url === siteName)?.stats?.monthly} dataKey="month" value="cnt" description="Month-wise" />
             <br/>
-            <BarGraph arr={mainData.find(data => data.url === siteName)?.stats?.monthly} dataKey="month" value="cnt" description="Month-wise" />
+            <BarGraph arr={mainData.find(data => data?.url === siteName)?.stats?.monthly} dataKey="month" value="cnt" description="Month-wise" />
         </div>
     );
 }

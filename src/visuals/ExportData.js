@@ -277,8 +277,7 @@ function Logs() {
           </button>
           <button onClick={downloadXML} className="m-4 p-2 bg-blue-600 text-white rounded">
             Download XML
-          </button>
-          <DownloadStatistics sessions={sessions} />
+          </button> 
         </div>
       ) : (
         <p className="text-gray-700">Not enough data to show</p>

@@ -56,9 +56,9 @@ function SiteMetrics() {
     
     useEffect(() => { getData(); }, []);
     
-    const countryData = mainData.find(data => data.url === siteName)?.countrys || [];
+    const countryData = mainData?.find(data => data.url === siteName)?.countrys || [];
     // Filter out countries with null or undefined names
-    const filteredCountryData = countryData.filter(country => country.name);
+    const filteredCountryData = countryData?.filter(country => country.name);
 
     return (
         <div>
@@ -80,11 +80,11 @@ function SiteMetrics() {
                 <h2 className='text-lg font-semibold'>Country-wise traffic Distribution</h2>
             </div>
 
-            <MapVisualization 
+            {/* <MapVisualization 
             locations={
-                mainData.find(data => data.url === siteName)?.stats?.daily[ mainData.find(data => data.url === siteName)?.stats?.daily.length - 1 ]?.day
+                mainData?.find(data => data.url === siteName)?.stats?.daily[ mainData.find(data => data.url === siteName)?.stats?.daily.length - 1 ]
             }
-            />
+            /> */}
 
 
             <br/>

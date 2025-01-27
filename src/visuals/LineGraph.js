@@ -3,6 +3,9 @@ import { CartesianGrid, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from 
 import { motion } from "framer-motion";
 
 function LineGraph({ arr, dataKey, value, description }) {
+    if(!arr || arr.length == 0){
+        return <h1 className='text-lg font-medium mb-4 text-gray-100' >Not enought Data to show</h1>
+    }
     return (
         <motion.div
             className='bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700'
