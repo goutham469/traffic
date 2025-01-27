@@ -17,7 +17,7 @@ function LineGraph({ arr, dataKey, value, description }) {
 
             <div className='h-80'>
                 <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={arr}>
+                    <LineChart data={arr}>   
                         <CartesianGrid strokeDasharray='3 3' stroke='#4B5563' />
                         <XAxis dataKey={dataKey} stroke='#9ca3af' />
                         <YAxis stroke='#9ca3af' />

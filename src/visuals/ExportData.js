@@ -4,8 +4,6 @@ import Header from '../common/Header';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-
 function ExportData() {
   return (
     <div className='flex-1 overflow-auto relative z-10'>
@@ -194,72 +192,6 @@ function Logs() {
     link.download = "sessions_data.xml";
     link.click();
     URL.revokeObjectURL(url);
-  }
-
-
-  
-
-  function DownloadStatistics( ) {
-    const countryStats = {};
-    const browserStats = {};
-    const deviceTypeStats = {};
-  
-    sessions.forEach((session) => {
-      countryStats[session.country] = (countryStats[session.country] || 0) + 1;
-      browserStats[session.browser] = (browserStats[session.browser] || 0) + 1;
-      deviceTypeStats[session.deviceType] = (deviceTypeStats[session.deviceType] || 0) + 1;
-    });
-  
-    // Chart Data
-    const countryChartData = Object.keys(countryStats).map((key) => ({
-      name: key,
-      Sessions: countryStats[key],
-    }));
-  
-    const browserChartData = Object.keys(browserStats).map((key) => ({
-      name: key,
-      Sessions: browserStats[key],
-    }));
-  
-    const deviceTypeChartData = Object.keys(deviceTypeStats).map((key) => ({
-      name: key,
-      Sessions: deviceTypeStats[key],
-    }));
-  
-    // Create PDF
-    const generatePDF = () => {
-      const pdf = new jsPDF();
-      pdf.text('Analytics and Session Data', 10, 10);
-  
-      // Adding session table to PDF
-      const headers = [
-        ['S.No', 'IP', 'Timestamp', 'Country', 'City', 'ZIP', 'Latitude', 'Longitude', 'Start', 'End', 'Duration (sec)', 'Browser', 'Device Type', 'Platform', 'Referrer', 'ISP'],
-      ];
-      const rows = sessions.map((data, idx) => [
-        idx + 1,
-        data.ip,
-        data.timestamp,
-        data.country,
-        data.city,
-        data.zip,
-        data.lat,
-        data.lon,
-        data.start,
-        data.end ? data.end : 'None',
-        data.end ? Math.floor((data.end - data.start) / 1000) : 'None',
-        data.browser,
-        data.deviceType,
-        data.platform,
-        data.referrer,
-        data.isp,
-      ]);
-      autoTable(pdf, { head: headers, body: rows });
-  
-      // Saving the PDF
-      pdf.save('session_data_with_analytics.pdf');
-    };
-
-    generatePDF();
   }
 
   return (

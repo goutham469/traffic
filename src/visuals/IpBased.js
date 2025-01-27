@@ -35,7 +35,7 @@ function SiteMetrics() {
       const result = await response.json();
       if (response.ok) {
         setMainData(result.data);
-        console.log(result.data);
+        // console.log(result.data);
 
         // Count null or undefined country names
         const ipData = result.data.find(data => data.url === siteName)?.ips || [];

@@ -19,7 +19,7 @@ const SIDEBAR_ITEMS = [
 	{ name: "Views", icon: FaEye, color: "#10B981", href: "./views" },
 	{ name: "Country Based", icon: FcGlobe, color: "#EC4899", href: "./country-based" },
 	{ name: "Device Based", icon: MdDevices, color: "#F59E0B", href: "./device-based" },
-	{ name: "ip address Based", icon: TrendingUp, color: "#3B82F6", href: "./ip-based" },
+	{ name: "IP address Based", icon: TrendingUp, color: "#3B82F6", href: "./ip-based" },
 	{ name: "Referer Data", icon: SiLogseq, color: "#6EE7B7", href: "./referer-data" },
 	{ name: "Settings", icon: Settings, color: "#6EE7B7", href: "./settings" },
 	{ name: "Help And Support", icon: FcOnlineSupport, color: "#10B981", href: "./help-and-support" },
