@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaGoogle } from "react-icons/fa";
 import { LockKeyhole, User } from "lucide-react";
+import { storeLoginTimestamp } from "../../utils/auth";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -28,7 +29,9 @@ const Login = () => {
     if (res.message === "login success") {
       toast.success(res.message);
       localStorage.setItem("email", credential.email);
+      storeLoginTimestamp();
       navigate("/dashboard");
+      
     } else {
       toast.error("Something went wrong");
     }
@@ -50,7 +53,7 @@ const Login = () => {
             className="w-12 h-12 mr-2"
             alt="logo"
           />
-          <b className="text-2xl">Traffic Meter</b>
+          <b className="text-2xl">WEB Insights</b>
         </div>
 
         <h2 className="text-xl font-semibold flex items-center justify-center gap-2">

@@ -2,11 +2,14 @@ import { BarChart2, Menu, Settings, TrendingUp } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MdDevices, MdPriceChange } from "react-icons/md";
-import { FcOnlineSupport , FcGlobe } from "react-icons/fc";
+import { FcOnlineSupport , FcGlobe, FcViewDetails } from "react-icons/fc";
 import { AiFillFileAdd } from "react-icons/ai";
-import { FaEye } from "react-icons/fa6";
+import { FaEye, FaUsers } from "react-icons/fa6";
 import { FaDownload } from "react-icons/fa";
 import { SiLogseq } from "react-icons/si";
+import { CgWebsite } from "react-icons/cg";
+import { GoCrossReference } from "react-icons/go";
+import { CiCircleList } from "react-icons/ci";
 
 const SIDEBAR_ITEMS = [
 	{
@@ -15,18 +18,19 @@ const SIDEBAR_ITEMS = [
 		color: "#6366f1",
 		href: "./",
 	},
+    { name: "users", icon: FaUsers, color: "#10B981", href: "./users" },
+	{ name: "Sites", icon: CgWebsite, color: "#6EE7B7", href: "./sites" },
+
 	{ name: "Views", icon: FaEye, color: "#10B981", href: "./views" },
 	{ name: "Country Based", icon: FcGlobe, color: "#EC4899", href: "./country-based" },
 	{ name: "Device Based", icon: MdDevices, color: "#F59E0B", href: "./device-based" },
 	{ name: "IP address Based", icon: TrendingUp, color: "#3B82F6", href: "./ip-based" },
-	{ name: "Referer Data", icon: SiLogseq, color: "#6EE7B7", href: "./referer-data" },
+	{ name: "Referer Data", icon: GoCrossReference, color: "#6EE7B7", href: "./referer-data" },
+
 	{ name: "Settings", icon: Settings, color: "#6EE7B7", href: "./settings" },
 	{ name: "CRM", icon: FcOnlineSupport, color: "#10B981", href: "./crm" },
-	{ name: "Plans", icon: MdPriceChange, color: "#10B981", href: "./plan" },
 	{ name: "Export/Download Data", icon: FaDownload, color: "#6EE7B7", href: "./export" },
-	{ name: "Log Data", icon: SiLogseq, color: "#6EE7B7", href: "./log-data" },
-    { name: "users", icon: MdPriceChange, color: "#10B981", href: "./users" },
-	{ name: "Sites", icon: FaDownload, color: "#6EE7B7", href: "./sites" },
+	{ name: "Log Data", icon: CiCircleList, color: "#6EE7B7", href: "./log-data" },
 ];
 
 const AdminSidebar = () => {

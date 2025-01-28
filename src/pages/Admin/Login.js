@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
 import { toast } from 'react-toastify';
+import { storeLoginTimestamp } from '../../utils/auth';
 
 function AdminLogin() {
     const navigate = useNavigate();
@@ -15,6 +16,7 @@ function AdminLogin() {
             setLogged(true);
             localStorage.setItem('adminEmail', credential.email);
             toast.success("Login success");
+            storeLoginTimestamp();
             navigate('/admin-dashboard');
         } else {
             toast.error("Invalid email");

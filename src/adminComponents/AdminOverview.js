@@ -1,13 +1,18 @@
 import { BarChart2, Users, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { FaArrowTrendUp } from "react-icons/fa6";
-import { IoTodaySharp } from "react-icons/io5";
+import { IoPeopleSharp, IoTodaySharp } from "react-icons/io5";
 
 import Header from "../common/Header";
 import StatCard from "../common/StatCard";
 import LineGraph from "../visuals/LineGraph";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { calculateSize } from "../utils/calculateSize";
+import { CgWebsite } from "react-icons/cg";
+import { IoMdResize } from "react-icons/io";
+import { CiCircleList } from "react-icons/ci";
+import { BsUniversalAccess } from "react-icons/bs";
 
 const AdminOverview = () => {
     const [totalViews, setTotalViews] = useState(0);
@@ -17,16 +22,32 @@ const AdminOverview = () => {
     const [salesOverviewData, setSalesOverviewData] = useState([]);
 	const [ipsOverview , setIpsOverview] = useState([])
 
+    const [totalDBSize , setTotalDBSize] = useState(0)
+    const [totalSites , setTotalSites] = useState(0)
+    const [totalUsers , setTotalUsers] = useState(0)
+    const [logsSize , setLogsSize] = useState(0)
+
     async function getData() {
         const toastId = toast.loading("Fetching data...");
         try {
             const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/sites/all-sites`);
+            let response2 = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/admin/overview`);
+
+            
 
             const result = await response.json();
             console.log(result);
             
             if (response.ok) {
-                console.log(result.data);
+                // console.log(result.data);
+                setTotalDBSize(calculateSize(result.data))
+                setTotalSites(result.data.length)
+                if(response2.ok){
+                    response2 = await response2.json();
+                    response2 = response2.data;
+                    setTotalUsers(response2.totalUsers)
+                    setLogsSize(response2.totalLogsSize)
+                }
 
                 const total = result.data.reduce((sum, item) => sum + item.views, 0);
 
@@ -128,10 +149,16 @@ const AdminOverview = () => {
                     transition={{ duration: 1 }}
                 >
                     <StatCard name="Total views" icon={Zap} value={totalViews.toLocaleString()} color="#6366F1" />
-					<StatCard name="Unique Visitors" icon={BarChart2} value={ipsOverview.length} color="#10B981" />
+					<StatCard name="Unique Visitors" icon={BsUniversalAccess} value={ipsOverview.length} color="#10B981" />
                     <StatCard name="Today views" icon={IoTodaySharp} value={todayViews.toLocaleString()} color="#8B5CF6" />
                     <StatCard name="Growth with Yesterday" icon={FaArrowTrendUp} value={`${growthRate}%`} color="#EC4899" />
                     <StatCard name="Organic traffic" icon={BarChart2} value={organicTraffic} color="#10B981" />
+
+                    <StatCard name="Total Sites" icon={CgWebsite} value={totalSites} color="#10B981" />
+                    <StatCard name="Total Users" icon={IoPeopleSharp} value={totalUsers} color="#10B981" />
+                    <StatCard name="Sites Size" icon={IoMdResize} value={totalDBSize.toLocaleString()} color="#10B981" />
+                    <StatCard name="logs Size" icon={CiCircleList} value={logsSize.toLocaleString()} color="#10B981" />
+
                 </motion.div>
 
                 {/* CHARTS */}

@@ -25,11 +25,13 @@ import AdminRefererGraph from "./adminComponents/AdminReferrerBased";
 import AdminExportData from "./adminComponents/AdminExportData";
 import AdminLogData from "./adminComponents/AdminLogData";
 import AllSites from "./pages/Admin/Sites";
+import AllUsers from "./pages/Admin/Users";
+import Landing from "./pages/src/Landing";
 
 export const router = createBrowserRouter([
     {
       path:'/',
-      element:<Login/>
+      element:<Landing/>
     },
     {
       path:'/login',
@@ -148,6 +150,10 @@ export const router = createBrowserRouter([
         {
           path:'sites',
           element:<AllSites/>
+        },
+        {
+          path:'users',
+          element:<AllUsers/>
         }
       ]
     },
