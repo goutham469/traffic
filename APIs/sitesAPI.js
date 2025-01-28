@@ -19,8 +19,15 @@ sitesAPI.get('/site' , async(req,res)=>{
 })
 
 sitesAPI.get('/all-sites' , async (req,res)=>{
-    let data = await req.sitesCollection.find().toArray()
-    res.send(data)
+    let data = await req.sitesCollection.find(  ).toArray()
+    if(data.length > 0)
+    {
+        res.send({status:true , data:data , userData:req.userDataObject})
+    }
+    else
+    {
+        res.send({status:false , message:"no sites found !" , userData:req.userDataObject})
+    }
 })
 
 sitesAPI.delete('/delete-site' , async(req,res) => {
