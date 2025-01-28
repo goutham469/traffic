@@ -9,7 +9,7 @@ import LineGraph from "../visuals/LineGraph";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const Overview = () => {
+const AdminOverview = () => {
     const [totalViews, setTotalViews] = useState(0);
     const [todayViews, setTodayViews] = useState(0);
     const [growthRate, setGrowthRate] = useState(0);
@@ -20,13 +20,11 @@ const Overview = () => {
     async function getData() {
         const toastId = toast.loading("Fetching data...");
         try {
-            const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/users/get-stats`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email: localStorage.getItem("email") }),
-            });
+            const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/sites/all-sites`);
 
             const result = await response.json();
+            console.log(result);
+            
             if (response.ok) {
                 console.log(result.data);
 
@@ -145,4 +143,4 @@ const Overview = () => {
     );
 };
 
-export default Overview;
+export default AdminOverview;
