@@ -9,7 +9,6 @@ const app = exp()
 
 const serverless = require("serverless-http")
 
-
 const usersAPI = require("./APIs/usersAPI")
 const trafficAPI = require("./APIs/trafficAPI")
 const DBAccess = require("./Middlewares/DBAccess")
@@ -19,7 +18,7 @@ const CheckSite = require("./Middlewares/CheckSite")
 const adminAPI = require("./APIs/adminAPI")
 
 app.use(exp.json())
-app.use(CORS())
+app.use(CORS(  ))
 
 console.log(process.env.MONGO_DB_URL)
 
@@ -28,27 +27,27 @@ let isMongoConnected = false;
 
 // MongoDB setup
 let mongoClientPromise = mclient.connect(process.env.MONGO_DB_URL)
-    .then(client => {
-        const DB = client.db('traffic')
+.then(client => {
+    const DB = client.db('traffic')
 
-        const usersCollection = DB.collection('users')
-        const sitesCollection = DB.collection('sites')
-        const metaCollection = DB.collection('meta')
-        const sessionsCollection = DB.collection('sessions')
+    const usersCollection = DB.collection('users')
+    const sitesCollection = DB.collection('sites')
+    const metaCollection = DB.collection('meta')
+    const sessionsCollection = DB.collection('sessions')
 
-        app.set('usersCollection' , usersCollection)
-        app.set('sitesCollection' , sitesCollection)
-        app.set('metaCollection' , metaCollection)
-        app.set('sessionsCollection' , sessionsCollection)
+    app.set('usersCollection' , usersCollection)
+    app.set('sitesCollection' , sitesCollection)
+    app.set('metaCollection' , metaCollection)
+    app.set('sessionsCollection' , sessionsCollection)
 
-        console.log("mongoDB connection successful")
+    console.log("mongoDB connection successful")
 
-        isMongoConnected = true;
-    })
-    .catch(err => {
-        console.error("MongoDB connection failed:", err);
-        process.exit(1); // Exit process on failure
-    });
+    isMongoConnected = true;
+})
+.catch(err => {
+    console.error("MongoDB connection failed:", err);
+    process.exit(1); // Exit process on failure
+});
 
 // Middleware to wait for MongoDB connection
 app.use(async (req, res, next) => {
@@ -86,4 +85,4 @@ app.get('/*',(req,res)=>{
     res.send("<h1>Route not found!</h1>")
 })
 
-app.listen(4000 , ()=>console.log("server running on PORT 4000..."))
+module.exports.handler = serverless(app);

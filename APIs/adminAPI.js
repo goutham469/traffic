@@ -53,6 +53,28 @@ adminAPI.get('/sessions' , async(req,res) => {
     }
 })
 
+function calculateSize(obj) {
+    return new TextEncoder().encode(JSON.stringify(obj)).length;
+}
+
+adminAPI.get('/overview' , async(req,res) => {
+    let obj = {
+        totalUsers:0,
+        totalLogsSize:0
+    }
+    let data = await req.sessionsCollection.find().toArray()
+    data = calculateSize(data);
+    obj.totalLogsSize = data;
+
+    data = await req.usersCollection.find().toArray()
+    obj.totalUsers = data.length;
+    res.json({
+        success:true,
+        data:obj
+    })
+
+})
+
 
 
 module.exports = adminAPI
