@@ -99,7 +99,7 @@
             console.log(data);
             
             try {
-                const response = await fetch("https://traffic-production.up.railway.app/traffic/visit", {
+                const response = await fetch("https://bxg6k4bj5g.execute-api.ap-south-1.amazonaws.com/dev/traffic/visit", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

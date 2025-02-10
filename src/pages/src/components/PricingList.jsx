@@ -5,7 +5,8 @@ import Button from "./Button";
 const PricingList = () => {
   return (
     <div className="flex gap-[1rem] max-lg:flex-wrap">
-      {pricing.map((item) => (
+      {
+        pricing.map((item) => (
         <div
           key={item.id}
           className="w-[19rem] max-lg:w-full h-full px-6 bg-n-8 border border-n-6 rounded-[2rem] lg:w-auto even:py-14 odd:py-8 odd:my-4 [&>h4]:first:text-color-2 [&>h4]:even:text-color-1 [&>h4]:last:text-color-3"
@@ -25,7 +26,12 @@ const PricingList = () => {
                 </div>
               </>
             )}
+            
           </div>
+
+          {
+            item.title == "Premium"&& <p className="text-wrap">*Start your 30day FREE trail for completly free.</p>
+          }
 
           <Button
             className="w-full mb-6"
