@@ -14,6 +14,7 @@ const Login = () => {
     let data = response.credential;
     let credential = jwtDecode(data);
 
+
     let res = await fetch(
       `${process.env.REACT_APP_SERVER_BASE_URL}/users/login`,
       {
@@ -21,7 +22,7 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: credential.email,
-          img: credential.img,
+          img: credential.picture,
         }),
       }
     );
@@ -33,7 +34,7 @@ const Login = () => {
       navigate("/dashboard");
       
     } else {
-      toast.error("Something went wrong");
+      toast.error(  res.message  ?  res.message  :  "Something went wrong");
     }
   }
 

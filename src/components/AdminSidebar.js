@@ -1,7 +1,7 @@
 import { BarChart2, Menu, Settings, TrendingUp } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { MdDevices, MdPriceChange } from "react-icons/md";
+import { MdApi, MdDevices, MdPriceChange } from "react-icons/md";
 import { FcOnlineSupport , FcGlobe, FcViewDetails } from "react-icons/fc";
 import { AiFillFileAdd } from "react-icons/ai";
 import { FaEye, FaUsers } from "react-icons/fa6";
@@ -31,6 +31,7 @@ const SIDEBAR_ITEMS = [
 	{ name: "CRM", icon: FcOnlineSupport, color: "#10B981", href: "./crm" },
 	{ name: "Export/Download Data", icon: FaDownload, color: "#6EE7B7", href: "./export" },
 	{ name: "Log Data", icon: CiCircleList, color: "#6EE7B7", href: "./log-data" },
+	{ name: "Server Health", icon: MdApi, color: "#6EE7B7", href: "./server-health" },
 ];
 
 const AdminSidebar = () => {

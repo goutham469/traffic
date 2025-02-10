@@ -33,7 +33,7 @@ function Dashboard() {
 
     useEffect(() => {
       if( !localStorage.getItem('email') ){
-        toast.warning("Unaothorized access");
+        toast.warning("Unauthorized access");
         navigate('/login')
       }
         getData();

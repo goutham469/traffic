@@ -30,14 +30,19 @@ function NewSite() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-	toast.warning("Your request is being processed.")
+	  toast.warning("Your request is being processed.")
+
+    let domain = new URL(url);
+    domain = domain.host;
+    console.log(domain)
+
 
     let response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/users/add-new-site`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: localStorage.getItem("email"),
-        url: url
+        url: domain
       })
     });
 

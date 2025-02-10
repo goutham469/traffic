@@ -24,9 +24,11 @@ import AdminIpBased from "./adminComponents/AdminIpBased";
 import AdminRefererGraph from "./adminComponents/AdminReferrerBased";
 import AdminExportData from "./adminComponents/AdminExportData";
 import AdminLogData from "./adminComponents/AdminLogData";
+import ServerHealth from './adminComponents/ServerHealth';
 import AllSites from "./pages/Admin/Sites";
 import AllUsers from "./pages/Admin/Users";
 import Landing from "./pages/src/Landing";
+import AdminCRM from "./adminComponents/AdminCRM";
 
 export const router = createBrowserRouter([
     {
@@ -129,7 +131,7 @@ export const router = createBrowserRouter([
         },
         {
           path:'crm',
-          element:<Help/>
+          element:<AdminCRM/>
         },
         {
           path:'plan',
@@ -154,6 +156,10 @@ export const router = createBrowserRouter([
         {
           path:'users',
           element:<AllUsers/>
+        },
+        {
+          path:'server-health',
+          element:<ServerHealth/>
         }
       ]
     },
